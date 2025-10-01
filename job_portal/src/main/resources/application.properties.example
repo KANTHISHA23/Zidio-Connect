@@ -1,0 +1,123 @@
+# ==============================
+# APP NAME
+# ==============================
+spring.application.name=job_portal
+
+# ==============================
+# DATABASE
+# ==============================
+spring.datasource.url=jdbc:mysql://localhost:3306/job_portalDB
+spring.datasource.username=root
+spring.datasource.password=IshaKanth@2003
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# ==============================
+# JPA / HIBERNATE
+# ==============================
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+# ==============================
+# LOGGING
+# ==============================
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+logging.level.org.springframework.security=DEBUG
+logging.level.org.springframework.cloud.netflix.eureka.server=INFO
+logging.level.com.netflix.eureka=INFO
+logging.level.org.springframework.web=INFO
+logging.level.org.springframework.cloud.netflix.eureka=DEBUG
+logging.level.com.netflix.eureka=DEBUG
+
+#===============================
+#SPRINGCONFIG
+#===============================
+spring.application.name=auth-service
+
+# ==============================
+# SERVER
+# ==============================
+server.port=8081
+spring.main.web-application-type=servlet
+spring.profiles.active=dev
+spring.devtools.restart.enabled=false
+
+# ==============================
+# JWT
+# ==============================
+jwt.secret=zidioSecretKey
+jwt.expiration=86400000
+
+# ==============================
+# EMAIL
+# ==============================
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=your-email@gmail.com
+spring.mail.password=your-app-password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+spring.mail.properties.mail.smtp.ssl.trust=smtp.gmail.com
+spring.mail.properties.mail.debug=true
+spring.mail.properties.mail.smtp.connectiontimeout=5000
+spring.mail.properties.mail.smtp.timeout=5000
+spring.mail.properties.mail.smtp.writetimeout=5000 
+
+
+# ==============================
+# CLOUDINARY
+# ==============================
+cloudinary.cloud_name=YOUR_CLOUD_NAME
+cloudinary.api_key=YOUR_API_KEY
+cloudinary.api_secret=YOUR_API_SECRET
+
+# ==============================
+# FILE UPLOAD
+# ==============================
+spring.servlet.multipart.max-file-size=5MB
+spring.servlet.multipart.max-request-size=5MB
+
+# ==============================
+# EUREKA SERVER CONFIG
+# ==============================
+spring.application.name=eureka-server
+
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+eureka.instance.prefer-ip-address=true
+eureka.instance.hostname=localhost
+eureka.instance.appname=eureka-server
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+eureka.server.enable-self-preservation=false
+
+# ==============================
+# SPRING CLOUD GATEWAY 
+# ==============================
+
+
+spring.cloud.gateway.routes[0].id=auth-service
+spring.cloud.gateway.routes[0].uri=http://localhost:7071
+spring.cloud.gateway.routes[0].predicates[0]=Path=auth/**
+
+spring.cloud.gateway.routes[1].id=employee-service
+spring.cloud.gateway.routes[1].uri=http://localhost:7072
+spring.cloud.gateway.routes[1].predicates[0]=Path=employee/**
+
+spring.cloud.gateway.routes[2].id=recruiter-service
+spring.cloud.gateway.routes[2].uri=http://localhost:7073
+spring.cloud.gateway.routes[2].predicates[0]=Path=recruiter/**
+
+spring.cloud.gateway.routes[3].id=jobPost-service
+spring.cloud.gateway.routes[3].uri=http://localhost:7074
+spring.cloud.gateway.routes[3].predicates[0]=Path=jobPost/**
+
+spring.cloud.gateway.routes[4].id=application-service
+spring.cloud.gateway.routes[4].uri=http://localhost:7075
+spring.cloud.gateway.routes[4].predicates[0]=Path=application/**
+
+spring.cloud.gateway.routes[5].id=admin-service
+spring.cloud.gateway.routes[5].uri=http://localhost:7076
+spring.cloud.gateway.routes[5].predicates[0]=Path=admin/**
+    
